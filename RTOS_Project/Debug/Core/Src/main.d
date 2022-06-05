@@ -23,7 +23,17 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/FreeRTOS.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/FreeRTOSConfig.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/projdefs.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/portable.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/deprecated_definitions.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/mpu_wrappers.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/task.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/list.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -50,3 +60,13 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/FreeRTOS.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/FreeRTOSConfig.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/projdefs.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/portable.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/deprecated_definitions.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/mpu_wrappers.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/task.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/list.h:
