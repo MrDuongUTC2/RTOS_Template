@@ -33,7 +33,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
  D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/mpu_wrappers.h \
  D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/task.h \
- D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/list.h
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/list.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/queue.h \
+ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/task.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -70,3 +72,5 @@ D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/portable
 D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/mpu_wrappers.h:
 D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/task.h:
 D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/list.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/queue.h:
+D:/Github/RTOS_template/RTOS_Template/RTOS_Project/Third_Party/FreeRTOS/include/task.h:

@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
 
 /* USER CODE END Includes */
 
@@ -35,6 +36,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,6 +49,9 @@
  UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+ TaskHandle_t task1_handle;
+ TaskHandle_t task2_handle;
+ QueueHandle_t xQueue1;
 
 /* USER CODE END PV */
 
@@ -54,12 +60,34 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
+void task1_handler(void* parameters);
+void task2_handler(void* parameters);
 
-static void task1_handler(void* parameters);
+extern  void SEGGER_UART_init(uint32_t);
+
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+
+/**
+  * @brief  Retargets the C library printf function to the USART.
+  * @param  None
+  * @retval None
+  */
+PUTCHAR_PROTOTYPE
+{
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+  return ch;
+}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
 
 /* USER CODE END 0 */
 
@@ -70,8 +98,6 @@ static void task1_handler(void* parameters);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
-	TaskHandle_t task1_handle;
 
 
 	BaseType_t status;
@@ -91,7 +117,6 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -99,9 +124,18 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+
   status = xTaskCreate(task1_handler, "Task-1", 200, "Hello world from Task-1", 2, &task1_handle);
 
   configASSERT(status == pdPASS);
+
+  status = xTaskCreate(task2_handler, "Task-2", 200, "Hello world from Task-2", 2, &task2_handle);
+
+  configASSERT(status == pdPASS);
+
+  xQueue1 = xQueueCreate(5, sizeof(uint8_t) );
+
+  //start the freeRTOS scheduler
   vTaskStartScheduler();
   /* USER CODE END 2 */
 
@@ -206,17 +240,30 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-static void task1_handler(void* parameters)
-{
-
-	const TickType_t xDelay = 500 / portTICK_PERIOD_MS;
+void task1_handler(void* parameters)
+{	uint8_t data = 0x30;
 	while(1)
 	{
-		HAL_UART_Transmit(&huart2, "0------", 3, 1000);
-		vTaskDelay( xDelay );
+			xQueueSend( xQueue1 , &data , portMAX_DELAY );
+			HAL_UART_Transmit(&huart2, &data , 1 , 10);
+			vTaskDelay( pdMS_TO_TICKS( 500 ) );
 	}
 
 }
+
+
+void task2_handler(void* parameters)
+{
+	while(1)
+	{
+		uint8_t buffer[5];
+		xQueueReceive( xQueue1 , buffer, portMAX_DELAY );
+		HAL_UART_Transmit(&huart2, "done" , 4 , HAL_MAX_DELAY);
+		//vTaskDelay( pdMS_TO_TICKS( 500 )  );
+	}
+
+}
+
 /* USER CODE END 4 */
 
 /**
